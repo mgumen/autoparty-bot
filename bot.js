@@ -3,6 +3,7 @@
 const Discord = require('discord.js');
 const winston = require('winston');
 const handler = require('./src/handler');
+const cron = require('node-cron');
 
 const logger = winston.createLogger({
   level: 'info',
@@ -24,6 +25,9 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   logger.info('Started autoparty bot!');
+  cron.schedule('* * * * *', () => {
+    message.channel.send('@here Cьогодні в/після 11 хтось буде?');
+  });
 });
 
 client.on('message', (message) => {
