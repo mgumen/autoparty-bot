@@ -42,7 +42,8 @@ const handler = {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const randomMemberIndex = Math.floor(Math.random() * fetchedMembers.size);
-                    fetchedMembers.array().map(member => message.reply(member.nickname));
+                    fetchedMembers.array().filter(member => !member.toString().includes('autoparty'));
+                    message.reply('Бомж - ' + fetchedMembers.array().toString() + ' АХАХХАХА');
                     message.reply('Бомж - ' + fetchedMembers.array()[randomMemberIndex].toString() + ' АХАХХАХА');
                 });
             }, 1000);
