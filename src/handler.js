@@ -42,7 +42,7 @@ const handler = {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const randomMemberIndex = Math.floor(Math.random() * fetchedMembers.size);
-                    let guildMembers = fetchedMembers.filter(member => !member.toString().includes('autoparty'));
+                    let guildMembers = fetchedMembers.filter(member => !member.toString().includes('@autoparty-bot'));
                     message.reply(args + ' - ' + guildMembers.array().toString() + ' АХАХАХА');
                     message.reply(args.charAt(0).toUpperCase() + args.slice(1) + ' - ' + guildMembers.array()[randomMemberIndex].toString() + ' АХАХАХА');
                 });
