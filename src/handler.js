@@ -42,7 +42,9 @@ const handler = {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const userIndex = Math.random() * (fetchedMembers.size - 1 - 1) + 1;
-                    message.reply('Бомж - ' + fetchedMembers[userIndex].user.username + ' АХАХХАХА');
+                    msg.channel.send(`There are currently ${fetchedMembers.size} members online in ${msg.guild.name}!`);
+                    log.info(fetchedMembers)
+                    message.reply('Бомж - ' + fetchedMembers.users[userIndex].user.username + ' АХАХХАХА');
                 });
             }, 1000);
         });
