@@ -3,7 +3,6 @@
 const userAgent = require('random-useragent');
 const puppeteer = require('puppeteer-extra');
 const cron = require('node-cron');
-const client = require('./bot');
 
 const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
