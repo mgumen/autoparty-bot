@@ -9,12 +9,12 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console({
       format: winston.format.combine(
-        winston.format.timestamp({
-          format: 'DD-MM-YYYY HH:MM:SS',
-        }),
-        winston.format.colorize(),
-        winston.format.align(),
-        winston.format.printf((info) => `[${info.timestamp}] [${info.level}] : ${info.message}`)
+          winston.format.timestamp({
+            format: 'DD-MM-YYYY HH:MM:SS',
+          }),
+          winston.format.colorize(),
+          winston.format.align(),
+          winston.format.printf((info) => `[${info.timestamp}] [${info.level}] : ${info.message}`)
       ),
     }),
   ],
@@ -45,4 +45,9 @@ client.on('message', (message) => {
   } catch (error) {
     logger.error(`Error occured: ${error}`);
   }
+});
+client.login(process.env.TOKEN).catch((err) => {
+  logger.error('Token does not exists. Please provide ENV variable');
+  logger.error('Shuttind down application');
+  process.exit();
 });
