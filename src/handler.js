@@ -2,14 +2,16 @@
 
 const userAgent = require('random-useragent');
 const puppeteer = require('puppeteer-extra');
-const cron = require('node-cron');
+var CronJob = require('cron').CronJob;
+
+var job = new CronJob('* * * * * *', function() {
+    console.log('You will see this message every second');
+}, null, true, 'America/Los_Angeles');
+job.start();
 
 const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
 
-cron.schedule('* * * * *', () => {
-    message.channel.send('@here Cьогодні в/після 11 хтось буде?');
-});
 
 const handler = {
     i(message) {
