@@ -41,8 +41,8 @@ const handler = {
         message.reply(loadMessage).then((msg) => {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
-                    const memberIndex = Math.floor(Math.random() * fetchedMembers.size);
-                    message.reply('Бомж - ' + fetchedMembers.array().toString() + ' АХАХХАХА');
+                    const randomMemberIndex = Math.floor(Math.random() * fetchedMembers.size);
+                    message.reply('Бомж - ' + fetchedMembers.array()[randomMemberIndex] + ' АХАХХАХА');
                 });
             }, 1000);
         });
