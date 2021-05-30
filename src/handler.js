@@ -36,10 +36,10 @@ const handler = {
     b(message, args) {
         message.reply('Cекунду, шукаю бомжа...').then((msg) => {
             setTimeout(() => {
-                const members = message.guild.members;
-                members.fetch().then((data) => {
-                    const userIndex = Math.random() * (data.size - 1 - 1) + 1;
-                    message.reply('Бомж - ' + data[0].name + ' АХАХХАХА');
+                msg.guild.members.fetch().then(fetchedMembers => {
+                    const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
+                    msg.channel.send(`There are currently ${totalOnline.size} members online in ${msg.guild.name}!`);
+                    message.reply('Бомж - ' + fetchedMembers[0].toString() + ' АХАХХАХА');
                 });
             }, 1000);
         });
