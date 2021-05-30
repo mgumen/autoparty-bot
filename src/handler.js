@@ -38,8 +38,8 @@ const handler = {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
-                    msg.channel.send(`There are currently ${totalOnline.size} members online in ${msg.guild.name}!`);
-                    message.reply('Бомж - ' + fetchedMembers[0].toString() + ' АХАХХАХА');
+                    msg.channel.send(`There are currently ${fetchedMembers.size} members online in ${msg.guild.name}!`);
+                    // message.reply('Бомж - ' + fetchedMembers[0].toString() + ' АХАХХАХА');
                 });
             }, 1000);
         });
