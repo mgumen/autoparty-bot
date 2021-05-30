@@ -34,17 +34,18 @@ const handler = {
     },
 
     b(message, args) {
+        const target = args;
         let loadMessage = 'Cекунду, шукаю бомжа ...';
         if (!args || args.length !== 0) {
-            loadMessage = 'Cекунду, шукаю '+ args +'a ...';
+            loadMessage = 'Cекунду, шукаю '+ target +'a ...';
         }
         message.reply(loadMessage).then((msg) => {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const randomMemberIndex = Math.floor(Math.random() * fetchedMembers.size);
                     let guildMembers = fetchedMembers.filter(member => !member.toString().includes('@autoparty-bot'));
-                    message.reply(args + ' - ' + guildMembers.array().toString() + ' АХАХАХА');
-                    message.reply(args.charAt(0).toUpperCase() + args.slice(1) + ' - ' + guildMembers.array()[randomMemberIndex].toString() + ' АХАХАХА');
+                    message.reply(target + ' - ' + guildMembers.array().toString() + ' АХАХАХА');
+                    message.reply(target.toString().charAt(0).toUpperCase() + args.slice(1) + ' - ' + guildMembers.array()[randomMemberIndex].toString() + ' АХАХАХА');
                 });
             }, 1000);
         });
