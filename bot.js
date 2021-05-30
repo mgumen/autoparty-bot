@@ -27,7 +27,7 @@ client.on('ready', () => {
   logger.info('Started autoparty bot!');
 
   const job = new CronJob('* * * * * *', function() {
-    client.channels.cache.get(`general`).send('You will see this message every second')
+    client.channels.cache.find(channel => channel.name === 'general').send('You will see this message every second')
   }, null, true, 'America/Los_Angeles');
   job.start();
 });
