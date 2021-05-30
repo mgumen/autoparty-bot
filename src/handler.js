@@ -18,7 +18,8 @@ const handler = {
             '`!s - stat` - статистика\n' +
             '`!b - bomj` - оприділяю бомжа з попередньої катки \n\n' +
             '`!go - go cs` - кс зазивала \n\n' +
-            'created by https://github.com/j-vlad-yevtushenko'
+            'created by https://github.com/j-vlad-yevtushenko \n\n' +
+            'improved by https://github.com/mgumen'
         );
     },
 
