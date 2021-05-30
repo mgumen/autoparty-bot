@@ -26,9 +26,9 @@ const client = new Discord.Client();
 client.on('ready', () => {
   logger.info('Started autoparty bot!');
 
-  const job = new CronJob('* * * * * *', function() {
-    client.channels.cache.find(channel => channel.name === 'general').send('You will see this message every second')
-  }, null, true, 'America/Los_Angeles');
+  const job = new CronJob('* * 18,22 * * *', function() {
+    client.channels.cache.find(channel => channel.name === 'general').send('@here Cьогодні в/після 11 хтось буде?')
+  }, null, true, 'Europe/Kiev');
   job.start();
 });
 
