@@ -36,15 +36,15 @@ const handler = {
     b(message, args) {
         let loadMessage = 'Cекунду, шукаю бомжа ...';
         if (!args || args.length !== 0) {
-            loadMessage = 'Cекунду, шукаю '+ args +' ...';
+            loadMessage = 'Cекунду, шукаю '+ args +'a ...';
         }
         message.reply(loadMessage).then((msg) => {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const randomMemberIndex = Math.floor(Math.random() * fetchedMembers.size);
-                    fetchedMembers.array().filter(member => !member.toString().includes('autoparty'));
-                    message.reply('Бомж - ' + fetchedMembers.array().toString() + ' АХАХХАХА');
-                    message.reply('Бомж - ' + fetchedMembers.array()[randomMemberIndex].toString() + ' АХАХХАХА');
+                    let guildMembers = fetchedMembers.array().filter(member => !member.toString().includes('autoparty'));
+                    message.reply('Бомж - ' + guildMembers.array().toString() + ' АХАХХАХА');
+                    message.reply('Бомж - ' + guildMembers.array()[randomMemberIndex].toString() + ' АХАХХАХА');
                 });
             }, 1000);
         });
