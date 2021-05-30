@@ -42,7 +42,7 @@ const handler = {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
                     const memberIndex = Math.floor(Math.random() * fetchedMembers.size);
-                    message.reply('Бомж - ' + fetchedMembers[memberIndex].user.username + ' АХАХХАХА');
+                    message.reply('Бомж - ' + fetchedMembers.toJSON().toString() + ' АХАХХАХА');
                 });
             }, 1000);
         });
