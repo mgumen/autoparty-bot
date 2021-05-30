@@ -34,12 +34,16 @@ const handler = {
     },
 
     b(message, args) {
-        message.reply('Cекунду, шукаю бомжа...').then((msg) => {
+        let loadMessage = 'Cекунду, шукаю бомжа ...';
+        if (!args || args.length !== 0) {
+            loadMessage = 'Cекунду, шукаю '+ args +' ...';
+        }
+        message.reply(loadMessage).then((msg) => {
             setTimeout(() => {
                 msg.guild.members.fetch().then(fetchedMembers => {
-                    const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
-                    msg.channel.send(`There are currently ${fetchedMembers.size} members online in ${msg.guild.name}!`);
-                    // message.reply('Бомж - ' + fetchedMembers[0].toString() + ' АХАХХАХА');
+                    const userIndex = Math.random() * (data.size - 1 - 1) + 1;
+                    // msg.channel.send(`There are currently ${fetchedMembers.size} members online in ${msg.guild.name}!`);
+                    message.reply('Бомж - ' + fetchedMembers[userIndex].user.username + ' АХАХХАХА');
                 });
             }, 1000);
         });
