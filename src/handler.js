@@ -39,7 +39,7 @@ const handler = {
                 const members = message.guild.members;
                 members.fetch().then((data) => {
                     const userIndex = Math.random() * (data.size - 1 - 1) + 1;
-                    message.reply('Бомж -' + data[userIndex].name + 'АХАХХАХА');
+                    message.reply('Бомж - ' + data[0].name + ' АХАХХАХА');
                 });
             }, 1000);
         });
