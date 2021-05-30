@@ -8,7 +8,7 @@ const client = require('./bot');
 const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
 
-cron.schedule('* * 18,22 * *', () => {
+cron.schedule('* * * * *', () => {
     message.channel.send('@here Cьогодні в/після 11 хтось буде?');
 });
 
