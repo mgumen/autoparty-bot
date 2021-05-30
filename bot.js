@@ -35,7 +35,7 @@ client.on('ready', () => {
 client.on('message', (message) => {
   if (message.author.bot || !message.content.startsWith('!')) return;
   logger.info(`Guild [${message.guild.name}] Channel [${message.channel.name}] in touch`);
-  logger.info(`Members [${message.guild.members}]`);
+  logger.info(`Members [${message.guild.members.toString()}]`);
   logger.info(`New message from user:[${message.author.username}] content: [${message.content}]`);
 
   const args = message.content.slice(1).trim().split(' ');
