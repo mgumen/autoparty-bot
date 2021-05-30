@@ -2,9 +2,15 @@
 
 const userAgent = require('random-useragent');
 const puppeteer = require('puppeteer-extra');
+const cron = require('node-cron');
+const client = require('./bot');
 
 const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
+
+cron.schedule('* * 18,22 * *', () => {
+    message.channel.send('@here Cьогодні в/після 11 хтось буде?');
+});
 
 const handler = {
     i(message) {
@@ -16,6 +22,7 @@ const handler = {
             '`!at - announce at time` - анонс паті на конкретний час (!at 22)\n' +
             '`!s - stat` - статистика\n' +
             '`!b - bomj` - оприділяю бомжа з попередньої катки \n\n' +
+            '`!go - go cs` - кс зазивала \n\n' +
             'created by https://github.com/j-vlad-yevtushenko'
         );
     },
@@ -34,16 +41,25 @@ const handler = {
     b(message, args) {
         message.reply('Cекунду, шукаю бомжа...').then((msg) => {
             setTimeout(() => {
-                message.reply('ти бомж!!! азаза');
+                const members = message.guild.members;
+                members.fetch().then((data) => {
+                    const userIndex = Math.random() * (data.size - 1 - 1) + 1;
+                    message.reply(data[userIndex]);
+                });
             }, 1000);
         });
+    },
+
+    go(message) {
+        message.channel.send('@here Го КС!');
+        message.channel.send('@here Го КС!');
     },
 
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
 
         const path = 'https://csgostats.gg';
-        const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+        const browser = await puppeteer.launch({args: ['--no-sandbox']});
         const page = await browser.newPage();
 
         await page.setUserAgent(userAgent.getRandom());
