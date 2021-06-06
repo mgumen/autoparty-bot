@@ -58,47 +58,48 @@ const handler = {
 
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
+        log.info(message.user.toString())
 
-        const path = 'https://csgostats.gg';
-        const browser = await puppeteer.launch({args: ['--no-sandbox']});
-        const page = await browser.newPage();
+        // const path = 'https://csgostats.gg';
+        // const browser = await puppeteer.launch({args: ['--no-sandbox']});
+        // const page = await browser.newPage();
+        //
+        // await page.setUserAgent(userAgent.getRandom());
+        // await page.goto(path + '/player/76561198112704674#/matches');
+        // await page.waitForSelector('.table');
+        //
+        // const url = await page.$$eval('.table tbody tr:first-child.js-link', (trs) =>
+        //     trs.map((tr) => {
+        //         const attr = tr.getAttribute('onclick');
+        //         const url = attr.substr(attr.search('/match/'));
+        //         return url.substr(0, url.length - 2);
+        //     })
+        // );
 
-        await page.setUserAgent(userAgent.getRandom());
-        await page.goto(path + '/player/76561198112704674#/matches');
-        await page.waitForSelector('.table');
+        // message.channel.send('', {
+        //     embed: {
+        //         color: 3447003,
+        //         title: 'Статистика',
+        //         url: path,
+        //         description: `Тут можна переглянути статистику усіх наших каток`,
+        //         thumbnail: {
+        //             url: 'https://cdn.discordapp.com/app-icons/769990595627319387/d284cace8d89541b7c5461fed41f161a.png?size=256',
+        //         },
+        //         fields: [
+        //             {
+        //                 name: 'Остання катка',
+        //                 value: `[:rainbow_flag:](${path + url})`,
+        //             },
+        //             {
+        //                 name: 'Усі катки за весь період',
+        //                 value: `[:pirate_flag:](${page.url()})`,
+        //             },
+        //         ],
+        //         timestamp: new Date(),
+        //     },
+        // });
 
-        const url = await page.$$eval('.table tbody tr:first-child.js-link', (trs) =>
-            trs.map((tr) => {
-                const attr = tr.getAttribute('onclick');
-                const url = attr.substr(attr.search('/match/'));
-                return url.substr(0, url.length - 2);
-            })
-        );
-
-        message.channel.send('', {
-            embed: {
-                color: 3447003,
-                title: 'Статистика',
-                url: path,
-                description: `Тут можна переглянути статистику усіх наших каток`,
-                thumbnail: {
-                    url: 'https://cdn.discordapp.com/app-icons/769990595627319387/d284cace8d89541b7c5461fed41f161a.png?size=256',
-                },
-                fields: [
-                    {
-                        name: 'Остання катка',
-                        value: `[:rainbow_flag:](${path + url})`,
-                    },
-                    {
-                        name: 'Усі катки за весь період',
-                        value: `[:pirate_flag:](${page.url()})`,
-                    },
-                ],
-                timestamp: new Date(),
-            },
-        });
-
-        await browser.close();
+        // await browser.close();
     },
 };
 
