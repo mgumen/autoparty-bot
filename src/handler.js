@@ -65,7 +65,7 @@ const handler = {
 
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
-        let userSteamId = userSteamIdMap.get(message.author.id);
+        let userSteamId = userSteamIdMap.get(message.author.id.toString());
         message.reply(message.author.id);
         message.reply(userSteamId);
         const path = 'https://csgostats.gg';
@@ -73,7 +73,9 @@ const handler = {
         const page = await browser.newPage();
 
         await page.setUserAgent(userAgent.getRandom());
-        await page.goto(path + '/player/' + userSteamId + '#/matches');
+        let s = path + '/player/' + userSteamId + '#/matches';
+        message.reply(s);
+        await page.goto(s);
         await page.waitForSelector('.table');
 
         const url = await page.$$eval('.table tbody tr:first-child.js-link', (trs) =>
