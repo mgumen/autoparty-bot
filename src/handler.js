@@ -66,6 +66,7 @@ const handler = {
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
         let userSteamId = userSteamIdMap.get(message.author.id);
+        console.log(userSteamId);
 
 
         const path = 'https://csgostats.gg';
