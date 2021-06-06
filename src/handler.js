@@ -59,6 +59,7 @@ const handler = {
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
         message.reply(message.author.toString());
+        message.reply(message.author.username.toString());
 
         // const path = 'https://csgostats.gg';
         // const browser = await puppeteer.launch({args: ['--no-sandbox']});
