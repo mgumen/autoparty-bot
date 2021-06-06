@@ -6,6 +6,9 @@ const puppeteer = require('puppeteer-extra');
 const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
 
+let userSteamIdMap = new Map();
+userSteamIdMap.set('','76561198055693338');
+
 
 const handler = {
     i(message) {
@@ -59,8 +62,9 @@ const handler = {
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
         message.reply(message.author.toString());
-        message.reply(message.author.fetchProfile().toString());
+        message.reply(message.author.id.toString());
         message.reply(message.author.username.toString());
+
 
         // const path = 'https://csgostats.gg';
         // const browser = await puppeteer.launch({args: ['--no-sandbox']});
