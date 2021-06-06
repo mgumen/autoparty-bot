@@ -66,6 +66,10 @@ const handler = {
         message.reply('Секунду, шукаю стату...');
         const userSteamId = userSteamIdMap.get(message.author.id);
         const path = 'https://csgostats.gg';
+        const urls = path + '/player/' + userSteamId + '#/matches';
+        message.reply(urls);
+        console.log(urls);
+
         const browser = await puppeteer.launch({args: ['--no-sandbox']});
         const page = await browser.newPage();
 
