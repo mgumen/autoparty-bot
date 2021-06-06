@@ -7,11 +7,11 @@ const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
 
 let userSteamIdMap = new Map();
-userSteamIdMap.set('647147225604030495','76561198055693338');//rokidemon
-userSteamIdMap.set('597469698724200489','76561199013338796');//-1
-userSteamIdMap.set('697539216829186070','76561198112704674');//shprot
-userSteamIdMap.set('851000365590773850','76561198047919064');//savage
-userSteamIdMap.set('635180027822080030','76561198049236193');//orest
+userSteamIdMap.set('647147225604030495', '76561198055693338');//rokidemon
+userSteamIdMap.set('597469698724200489', '76561199013338796');//-1
+userSteamIdMap.set('697539216829186070', '76561198112704674');//shprot
+userSteamIdMap.set('851000365590773850', '76561198047919064');//savage
+userSteamIdMap.set('635180027822080030', '76561198049236193');//orest
 
 
 const handler = {
@@ -45,7 +45,7 @@ const handler = {
         let target = 'Бомж';
         let loadMessage = 'Cекунду, шукаю бомжа ...';
         if (!args || args.length !== 0) {
-            loadMessage = 'Cекунду, шукаю '+ args +'a ...';
+            loadMessage = 'Cекунду, шукаю ' + args + 'a ...';
             target = args;
         }
         message.reply(loadMessage).then((msg) => {
@@ -66,9 +66,6 @@ const handler = {
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
         let userSteamId = userSteamIdMap.get(message.author.id);
-        console.log(userSteamId);
-
-
         const path = 'https://csgostats.gg';
         const browser = await puppeteer.launch({args: ['--no-sandbox']});
         const page = await browser.newPage();
