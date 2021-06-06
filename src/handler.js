@@ -65,17 +65,13 @@ const handler = {
 
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
-        let userSteamId = userSteamIdMap.get(message.author.id.toString());
-        message.reply(message.author.id);
-        message.reply(userSteamId);
+        let userSteamId = userSteamIdMap.get(message.author.id);
         const path = 'https://csgostats.gg';
         const browser = await puppeteer.launch({args: ['--no-sandbox']});
         const page = await browser.newPage();
 
         await page.setUserAgent(userAgent.getRandom());
-        let s = path + '/player/' + userSteamId + '#/matches';
-        message.reply(s);
-        await page.goto(s);
+        await page.goto(path + '/player/76561199013338796#/matches');
         await page.waitForSelector('.table');
 
         const url = await page.$$eval('.table tbody tr:first-child.js-link', (trs) =>
