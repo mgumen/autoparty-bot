@@ -5,6 +5,12 @@ const puppeteer = require('puppeteer-extra');
 
 const stealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(stealthPlugin());
+const userSteamIdMap = new Map();
+userSteamIdMap.set('647147225604030495', '76561198055693338');//rokidemon
+userSteamIdMap.set('597469698724200489', '76561199013338796');//-1
+userSteamIdMap.set('697539216829186070', '76561198112704674');//shprot
+userSteamIdMap.set('851000365590773850', '76561198047919064');//savage
+userSteamIdMap.set('635180027822080030', '76561198049236193');//orest
 
 
 const handler = {
@@ -38,7 +44,7 @@ const handler = {
         let target = 'Бомж';
         let loadMessage = 'Cекунду, шукаю бомжа ...';
         if (!args || args.length !== 0) {
-            loadMessage = 'Cекунду, шукаю '+ args +'a ...';
+            loadMessage = 'Cекунду, шукаю ' + args + 'a ...';
             target = args;
         }
         message.reply(loadMessage).then((msg) => {
@@ -58,13 +64,13 @@ const handler = {
 
     async s(message, args) {
         message.reply('Секунду, шукаю стату...');
-
+        const userSteamId = userSteamIdMap.get(message.author.id);
         const path = 'https://csgostats.gg';
         const browser = await puppeteer.launch({args: ['--no-sandbox']});
         const page = await browser.newPage();
 
         await page.setUserAgent(userAgent.getRandom());
-        await page.goto(path + '/player/76561198112704674#/matches');
+        await page.goto(path + '/player/' + userSteamId + '#/matches');
         await page.waitForSelector('.table');
 
         const url = await page.$$eval('.table tbody tr:first-child.js-link', (trs) =>
