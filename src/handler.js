@@ -91,7 +91,7 @@ const handler = {
                 url: path,
                 description: `Тут можна переглянути статистику усіх наших каток`,
                 thumbnail: {
-                    url: 'https://cdn.discordapp.com/app-icons/' + userSteamId + '/d284cace8d89541b7c5461fed41f161a.png?size=256',
+                    url: 'https://cdn.discordapp.com/app-icons/769990595627319387/d284cace8d89541b7c5461fed41f161a.png?size=256',
                 },
                 fields: [
                     {
